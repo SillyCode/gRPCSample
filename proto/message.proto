@@ -1,0 +1,35 @@
+syntax = "proto3";
+
+package main;
+
+option go_package = "proto/proto";
+
+message CAR {
+	string brand = 1;
+	string model = 2;
+	int32 number_seats = 3;
+	ENGINE_TYPE engine_type = 4;
+	int32 number_of_airbags = 5;
+	Style style = 6;
+}
+
+enum Style {
+	LOW = 0;
+	BASIC = 1;
+	MIDDLE = 2;
+	HIGH = 3;
+}
+
+enum ENGINE_TYPE {
+	GAZ = 0;
+	FUEL = 1;
+	EV = 2;
+}
+
+message GetCarResponse {
+	string message = 1;
+}
+
+service Get_Car {
+	rpc GetCar (CAR) returns (GetCarResponse) {}
+}
